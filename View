@@ -1,9 +1,53 @@
-<td>No</td>
-<td>NIS</td>
-<td>Nama</td>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Perpustakaan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+</head>
+<body>
+@extends('master')
+    @section('biodata','admin')
+    @section('kbiodata')
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="pull-left">
+                    <h2>Perpustakaan MBSR</h2>
+                </div>
+                
+            </div>
+        </div>
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                    <th>No</th>
+                    <th>NIS</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Jurusan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($datasiswa as $index=>$data)
+                    <tr>
+                        <td>{{ $index + $datasiswa->firstItem() }}</td>
+                        <td>{{ $data->NIS }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->kelas }}</td>
+                        <td>{{ $data->jurusan }}</td>
 
-@foreach($datasiswa as $index =>$data)
-
-<td>{{$index + $datasiswa->firstItem()}}</td>
-<td>{{$data->nis}}</td>
-<td>{{$data->nama}}</td>
+                    </tr>
+                    @endforeach
+            </tbody>
+        </table>
+       
+    </div>
+    @endsection
+</body>
+</html>

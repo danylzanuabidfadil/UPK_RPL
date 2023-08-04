@@ -1,0 +1,9 @@
+<td>No</td>
+<td>NIS</td>
+<td>Nama</td>
+
+@foreach($datasiswa as $index =>$data)
+
+<td>{{$index + $datasiswa->firstItem()}}</td>
+<td>{{$data->nis}}</td>
+<td>{{$data->nama}}</td>
